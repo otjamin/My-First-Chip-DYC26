@@ -90,7 +90,20 @@ async def test_all(dut):
     clock = Clock(dut.clk, 10, unit="us")
     cocotb.start_soon(clock.start())
 
-    # TODO: Run full test
+    for a in range(16):
+        for b in range(16):
+            expected_sum = a + b
+
+            dut._log.info(f"Adding {a} and {b}, expecting {expected_sum}")
+
+            await tester.set_operand(a, save_A=1, save_B=0)
+            await RisingEdge(tester.clk)
+
+            await tester.set_operand(b, save_A=0, save_B=1)  
+            await RisingEdge(tester.clk)
+
+            await tester.set_operand(0, save_A=0, save_B=0)  
+            assert tester.result.value == expected_sum, f"Expected {expected_sum}, got {tester.result.value}"
 
     dut._log.info("✓ Full test passed")
 
