@@ -113,7 +113,7 @@ MACROS:
       nom_typ_1p20V_25C: dir::../M1_Controller/final/spef/nom/controller.nom.spef
     instances:
       u_chip.u_ctrl:
-        location: [600, 400]
+        location: [460, 460]
         orientation: N
 
   "adder":
@@ -128,7 +128,7 @@ MACROS:
       nom_typ_1p20V_25C: dir::../M2_Adder/final/spef/nom/adder.nom.spef
     instances:
       u_chip.u_adder:
-        location: [600, 500]
+        location: [560, 460]
         orientation: N
 
   "bcd_converter":
@@ -143,7 +143,7 @@ MACROS:
       nom_typ_1p20V_25C: dir::../M3_BCD/final/spef/nom/bcd_converter.nom.spef
     instances:
       u_chip.u_bcd:
-        location: [600, 600]
+        location: [660, 460]
         orientation: N
 
   "seven_segment":
@@ -158,10 +158,10 @@ MACROS:
       nom_typ_1p20V_25C: dir::../M4_7segment/final/spef/nom/seven_segment.nom.spef
     instances:
       u_chip.u_seg0:
-        location: [400, 400]
+        location: [460, 660]
         orientation: N
       u_chip.u_seg1:
-        location: [400, 600]
+        location: [660, 660]
         orientation: N
 
 PDN_MACRO_CONNECTIONS:
