@@ -93,6 +93,7 @@ PAD_NORTH: [
 PAD_WEST: [
   clk_pad,
   rst_n_pad,
+  button_pad,
   "x_pads\\[0\\].x_pad",
   "x_pads\\[1\\].x_pad",
   "x_pads\\[2\\].x_pad",
@@ -103,41 +104,69 @@ MACROS:
   "controller":
     gds: dir::../M1_Controller/final/gds/controller.gds
     lef: dir::../M1_Controller/final/lef/controller.lef
+    nl: dir::../M1_Controller/final/nl/controller.nl.v
+    lib:
+      nom_typ_1p20V_25C: dir::../M1_Controller/final/lib/nom_typ_1p20V_25C/controller__nom_typ_1p20V_25C.lib
+      nom_fast_1p32V_m40C: dir::../M1_Controller/final/lib/nom_fast_1p32V_m40C/controller__nom_fast_1p32V_m40C.lib
+      nom_slow_1p08V_125C: dir::../M1_Controller/final/lib/nom_slow_1p08V_125C/controller__nom_slow_1p08V_125C.lib
+    spef:
+      nom_typ_1p20V_25C: dir::../M1_Controller/final/spef/nom/controller.nom.spef
     instances:
-      u_ctrl:
+      u_chip.u_ctrl:
         location: [600, 400]
         orientation: N
 
   "adder":
     gds: dir::../M2_Adder/final/gds/adder.gds
     lef: dir::../M2_Adder/final/lef/adder.lef
+    nl: dir::../M2_Adder/final/nl/adder.nl.v
+    lib:
+      nom_typ_1p20V_25C: dir::../M2_Adder/final/lib/nom_typ_1p20V_25C/adder__nom_typ_1p20V_25C.lib
+      nom_fast_1p32V_m40C: dir::../M2_Adder/final/lib/nom_fast_1p32V_m40C/adder__nom_fast_1p32V_m40C.lib
+      nom_slow_1p08V_125C: dir::../M2_Adder/final/lib/nom_slow_1p08V_125C/adder__nom_slow_1p08V_125C.lib
+    spef:
+      nom_typ_1p20V_25C: dir::../M2_Adder/final/spef/nom/adder.nom.spef
     instances:
-      u_adder:
+      u_chip.u_adder:
         location: [600, 500]
         orientation: N
 
   "bcd_converter":
     gds: dir::../M3_BCD/final/gds/bcd_converter.gds
     lef: dir::../M3_BCD/final/lef/bcd_converter.lef
+    nl: dir::../M3_BCD/final/nl/bcd_converter.nl.v
+    lib:
+      nom_typ_1p20V_25C: dir::../M3_BCD/final/lib/nom_typ_1p20V_25C/bcd_converter__nom_typ_1p20V_25C.lib
+      nom_fast_1p32V_m40C: dir::../M3_BCD/final/lib/nom_fast_1p32V_m40C/bcd_converter__nom_fast_1p32V_m40C.lib
+      nom_slow_1p08V_125C: dir::../M3_BCD/final/lib/nom_slow_1p08V_125C/bcd_converter__nom_slow_1p08V_125C.lib
+    spef:
+      nom_typ_1p20V_25C: dir::../M3_BCD/final/spef/nom/bcd_converter.nom.spef
     instances:
-      u_bcd:
+      u_chip.u_bcd:
         location: [600, 600]
         orientation: N
 
   "seven_segment":
     gds: dir::../M4_7segment/final/gds/seven_segment.gds
     lef: dir::../M4_7segment/final/lef/seven_segment.lef
+    nl: dir::../M4_7segment/final/nl/seven_segment.nl.v
+    lib:
+      nom_typ_1p20V_25C: dir::../M4_7segment/final/lib/nom_typ_1p20V_25C/seven_segment__nom_typ_1p20V_25C.lib
+      nom_fast_1p32V_m40C: dir::../M4_7segment/final/lib/nom_fast_1p32V_m40C/seven_segment__nom_fast_1p32V_m40C.lib
+      nom_slow_1p08V_125C: dir::../M4_7segment/final/lib/nom_slow_1p08V_125C/seven_segment__nom_slow_1p08V_125C.lib
+    spef:
+      nom_typ_1p20V_25C: dir::../M4_7segment/final/spef/nom/seven_segment.nom.spef
     instances:
-      u_seg0:
+      u_chip.u_seg0:
         location: [400, 400]
         orientation: N
-      u_seg1:
+      u_chip.u_seg1:
         location: [400, 600]
         orientation: N
 
 PDN_MACRO_CONNECTIONS:
-  - u_ctrl VDD VSS VPWR VGND
-  - u_adder VDD VSS VPWR VGND
-  - u_bcd VDD VSS VPWR VGND
-  - u_seg0 VDD VSS VPWR VGND
-  - u_seg1 VDD VSS VPWR VGND
+  - u_chip.u_ctrl VDD VSS VPWR VGND
+  - u_chip.u_adder VDD VSS VPWR VGND
+  - u_chip.u_bcd VDD VSS VPWR VGND
+  - u_chip.u_seg0 VDD VSS VPWR VGND
+  - u_chip.u_seg1 VDD VSS VPWR VGND
