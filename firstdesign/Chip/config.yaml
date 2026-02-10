@@ -64,34 +64,80 @@ EXTRA_GDS:
 EXTRA_LEFS:
 - dir::bondpad/bondpad_70x70.lef
 
-PAD_SOUTH: [
-  #complete this
-]
+PAD_SOUTH:
+  - "vdd_pads\\[0\\].vdd_pad"
+  - "vss_pads\\[0\\].vss_pad"
+  - "iovdd_pads\\[0\\].iovdd_pad"
+  - "iovss_pads\\[0\\].iovss_pad"
 
 PAD_EAST: [
-  #complete this
+  "seg1_pads\\[0\\].seg1_pad",
+  "seg1_pads\\[1\\].seg1_pad",
+  "seg1_pads\\[2\\].seg1_pad",
+  "seg1_pads\\[3\\].seg1_pad",
+  "seg1_pads\\[4\\].seg1_pad",
+  "seg1_pads\\[5\\].seg1_pad",
+  "seg1_pads\\[6\\].seg1_pad",
 ]
 
 PAD_NORTH: [
-  #complete this
+  "seg0_pads\\[0\\].seg0_pad",
+  "seg0_pads\\[1\\].seg0_pad",
+  "seg0_pads\\[2\\].seg0_pad",
+  "seg0_pads\\[3\\].seg0_pad",
+  "seg0_pads\\[4\\].seg0_pad",
+  "seg0_pads\\[5\\].seg0_pad",
+  "seg0_pads\\[6\\].seg0_pad",
 ]
 
 PAD_WEST: [
-  #complete this
+  clk_pad,
+  rst_n_pad,
+  "x_pads\\[0\\].x_pad",
+  "x_pads\\[1\\].x_pad",
+  "x_pads\\[2\\].x_pad",
+  "x_pads\\[3\\].x_pad",
 ]
 
 MACROS:
   "controller":
-    #complete this
+    gds: dir::../M1_Controller/final/gds/controller.gds
+    lef: dir::../M1_Controller/final/lef/controller.lef
+    instances:
+      u_ctrl:
+        location: [600, 400]
+        orientation: N
 
   "adder":
-    #complete this
+    gds: dir::../M2_Adder/final/gds/adder.gds
+    lef: dir::../M2_Adder/final/lef/adder.lef
+    instances:
+      u_adder:
+        location: [600, 500]
+        orientation: N
 
   "bcd_converter":
-    #complete this
+    gds: dir::../M3_BCD/final/gds/bcd_converter.gds
+    lef: dir::../M3_BCD/final/lef/bcd_converter.lef
+    instances:
+      u_bcd:
+        location: [600, 600]
+        orientation: N
 
   "seven_segment":
-    #complete this
+    gds: dir::../M4_7segment/final/gds/seven_segment.gds
+    lef: dir::../M4_7segment/final/lef/seven_segment.lef
+    instances:
+      u_seg0:
+        location: [400, 400]
+        orientation: N
+      u_seg1:
+        location: [400, 600]
+        orientation: N
 
-PDN_MACRO_CONNECTIONS: 
-#complete this
+PDN_MACRO_CONNECTIONS:
+  - u_ctrl VDD VSS VPWR VGND
+  - u_adder VDD VSS VPWR VGND
+  - u_bcd VDD VSS VPWR VGND
+  - u_seg0 VDD VSS VPWR VGND
+  - u_seg1 VDD VSS VPWR VGND
