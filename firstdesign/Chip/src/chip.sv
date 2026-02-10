@@ -25,6 +25,32 @@ controller u_ctrl(
     .show_result(show_result)
 );
 
-//complete the rest of the instantiations
+adder u_adder(
+    .clk(clk),
+    .operand(X),
+    .save_A(save_A),
+    .save_B(save_B),
+    .result(result)
+);
+
+bcd_converter u_bcd(
+    .binary(result),
+    .tens(tens),
+    .ones(ones)
+);
+
+seven_segment u_seg0(
+    .clk(clk),
+    .digit(tens),
+    .update(show_result),
+    .seg(seg0)
+);
+
+seven_segment u_seg1(
+    .clk(clk),
+    .digit(ones),
+    .update(show_result),
+    .seg(seg1)
+);
 
 endmodule
