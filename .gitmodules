@@ -4,3 +4,6 @@
 [submodule "librelane"]
 	path = librelane
 	url = https://github.com/librelane/librelane.git
+[submodule "chips/14-ir-decoder/design_data"]
+	path = chips/14-ir-decoder/design_data
+	url = https://github.com/Chip-Design-Group/IR-Remote-Decoder.git
